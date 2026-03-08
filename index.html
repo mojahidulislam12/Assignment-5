@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issues Tracker</title>
-    <!-- Daisy and Tailwind -->
+    <title>GitHub issues Tracker | Login</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind + Daisy -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
 </head>
 
-<body>
-    <h1 class=" text-2xl flex justify-center">GitHub Issues Tracker</h1>
+<body class="h-[850px] w-full  bg-base-200 ">
+
+    <div class="form pt-10 mx-auto">
+
+        <div
+            class="md:w-[520px] w-[520px] md:h-[720px] h-full card bg-base-100   shrink-0 shadow md:mt-[78.5px] ml-[105px]  md:ml-[540px] rounded-3xl bg-[#FFFFFF]">
+
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="mx-auto mt-[32px]" src="./assets/github-logo.png" alt="">
+                    <h1 class="font-semibold text-[24px] mt-6">GitHub Issues Tracker</h1>
+                    <p class="font-normal text-[16px] text-[#64748B]">Sign in to manage your issues</p>
+                </div>
+                <fieldset class="fieldset">
+                    <label class="label font-medium text-[16px] mt-6 text-[#1F2937]">Username</label>
+                    <input type="text" id="input-name"
+                        class="input  bg-white md:w-[456px] w-full h-[48px] rounded-[8px]" maxlength="11" minlength="11"
+                        placeholder="Enter Username" value="admin" />
+                    <label class="label font-medium text-[16px] mt-4 text-[#1F2937]">Password</label>
+                    <input type="password" id="input-password"
+                        class="input  bg-white md:w-[456px] w-full h-[48px] rounded-[8px]" maxlength="4" minlength="4"
+                        placeholder="Enter Password" value="admin123" />
+
+                    <button id="login-btn"
+                        class="btn btn-neutra bg-[#3B25C1] text-[#FFFFFF] md:w-[456px] w-full h-[48px] rounded-[8px] mt-6">Sign
+                        In</button>
+                    <p class="divider">OR</p>
+                    <p class="text-center font-normal sm:w-full text-[14px] text-[#64748B]">Demo Credentials:</p>
+                    <div
+                        class="bg-[#F8FAFC] md:w-[456px] w-full h-[90px] mt-2 pt-6 font-medium text-[16px] text-[#1F2937]">
+                        <h2 class="text-center"><span class="font-semibold">Username</span>: admin <br><span
+                                class="font-semibold">Password</span>: admin123</h2>
+
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+
 </body>
 
 </html>

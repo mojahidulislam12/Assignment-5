@@ -31,7 +31,38 @@ const loadDetail = (id) => {
 const displayDetails = (detail) => {
   console.log(detail);
   const detailsContainer = document.getElementById("details-container");
-  //detailsContainer.innerHTML = `<h1>Hello</h1>`;
+  detailsContainer.innerHTML = `
+  <div class="flex justify-between ">
+                    <p class="font-bold text-[24px] text-[#1F2937]">${detail.title}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="btn w-[62px] h-[24px] bg-[#00A96E] text-[#FFFFFF] rounded-[100px]">${
+                      detail.status
+                    }</button>
+                    <p class="font-normal text-[12px] text-[#64748B]">${
+                      detail.author
+                    }</p>
+                    <p class="font-normal text-[12px] text-[#64748B]">${
+                      detail.createdAt
+                    }</p>
+
+                </div>
+                <div class="flex gap-2">
+                   ${createElements(detail.labels)}
+
+                </div>
+                <p class="font-normal text-[16px]  text-[#64748B]">${detail.description}</p>
+                <div class="w-[636px] h-[81] bg-[#F8FAFC] flex items-center p-4">
+                    <div class="w-[297px]">
+                        <p class="font-normal text-[16px]  text-[#64748B]">Assignee:</p>
+                        <p class="font-semibold text-[16px] text-[#1F2937]">${detail.assignee}</p>
+                    </div>
+                    <div>
+                        <p>Priority:</p>
+                        <button class="rounded-[100px] w-[61px] h-[24px] bg-[#EF4444] text-[#FFFFFF]">${detail.status}</button>
+                    </div>
+                </div>
+  `;
   document.getElementById("my_modal_5").showModal();
 };
 // Opens
@@ -51,14 +82,14 @@ const displayOpens = (openDatas) => {
   openContainer.innerHTML = "";
   openDatas.forEach((openData) => {
     if (openData.status == "open") {
-      //console.log(openData);
+      console.log(openData.id);
       const openCard = document.createElement("div");
       if (openCard) {
         issuesContainer.classList.add("hidden");
         closedContainer.classList.add("hidden");
       }
       openCard.innerHTML = `
-      <div onclick="my_modal_5.showModal()" class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="loadDetail(${openData.id})" class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${openData.status}</button>
@@ -111,7 +142,7 @@ const displayCloseds = (closedDatas) => {
         issuesContainer.classList.add("hidden");
       }
       closedCard.innerHTML = `
-      <div onclick="my_modal_5.showModal()" class="card  border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="loadDetail(${closedData.id})" class="card  border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${closedData.status}</button>

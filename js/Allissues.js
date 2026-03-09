@@ -41,6 +41,7 @@ const displayOpens = (openDatas) => {
       const openCard = document.createElement("div");
       if (openCard) {
         issuesContainer.classList.add("hidden");
+        closedContainer.classList.add("hidden");
       }
       openCard.innerHTML = `
       <div class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
@@ -85,14 +86,15 @@ const loadCloseds = () => {
 const closedContainer = document.getElementById("closed-container");
 const displayCloseds = (closedDatas) => {
   hiddenLoding();
+
   closedContainer.innerHTML = "";
   closedDatas.forEach((closedData) => {
     if (closedData.status == "closed") {
+      console.log(closedData.length);
       //console.log(openData);
       const closedCard = document.createElement("div");
       if (closedData) {
         issuesContainer.classList.add("hidden");
-        openContainer.classList.add("hidden");
       }
       closedCard.innerHTML = `
       <div class="card bg-white border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">

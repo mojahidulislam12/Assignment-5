@@ -25,10 +25,10 @@
     </style>
 </head>
 
-<body class="w-full bg-base-200 min-h-screen">
-    <header class="h-[78px] bg-white">
-        <div class="flex justify-between ml-[80px] mr-[80px] ">
-            <div class="flex justify-start gap-1 mt-[22.5px]">
+<body class="md:w-full w-[768px] bg-base-200 min-h-screen">
+    <header class="md:h-[78px] h-[78px] bg-white">
+        <div class="flex justify-between items-center   ml-[80px] mr-[80px] ">
+            <div class="flex justify-start items-center  gap-1 mt-[22.5px]">
                 <img class="w-9 h-[37px]" src="assets/github-logo.png" alt="" srcset="">
                 <h1 class="font-semibold text-[24px] text-[#1F2937]">GitHub Issues Tracker</h1>
             </div>
@@ -44,7 +44,7 @@
         </div>
 
     </header>
-    <section class="w-[1450px] h-[88px] mx-auto bg-white mt-[60px]">
+    <section class="md:w-[1450px] w-full h-[88px] md:text-left text-center mx-auto bg-white mt-[60px]">
         <div class="p-6 space-x-2">
             <button id="allIssues" onclick="" class="btn w-[120px] h-[40px]">All</button>
 
@@ -55,35 +55,14 @@
     <div id="lodingSpiner" class="text-center hidden">
         <span class="loading loading-spinner loading-xl align-middle"></span>
     </div>
-    <section id="Issues-container" class=" w-[1450px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
+    <section id="Issues-container" class="md:w-[1450px] w-[768px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
         <div id="total-count">
 
         </div>
-        <div id="issues-container" class="grid grid-cols-4 gap-5">
+        <div id="issues-container" class="grid grid-cols-2 md:grid-cols-4 gap-5">
 
 
-            <div class="card bg-white border-2 w-[256.5px] h-[280px] p-4 space-y-4">
-                <div class="flex justify-between ">
-                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
-                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">High</button>
-                </div>
-                <div>
-                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
-                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
-                        mobile devices...</p>
-                </div>
-                <div>
-                    <button class="btn w-[56px] h-[24px] bg-[#FEECEC] text-[#EF4444]">btn1</button>
-                    <button class="btn w-[112px] h-[24px] bg-[#FFF8DB] text-[#FDE68A]">btn1</button>
 
-                </div>
-                <hr class="w-[260px] ml-[-17.5px] opacity-100">
-                <div>
-                    <p>#1 by john_doe</p>
-                    <p>1/15/2024</p>
-                </div>
-
-            </div>
 
 
 
@@ -94,67 +73,23 @@
 
     </section>
 
-    <section id="Opens-container" class=" w-[1450px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
+    <section id="Opens-container" class=" md:w-[1450px] w-[768px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
         <div id="total-count">
 
         </div>
-        <div id="open-container" class=" grid grid-cols-4 gap-5">
-            <div class="card bg-white border-2 w-[256.5px] h-[280px] p-4 space-y-4">
-                <div class="flex justify-between ">
-                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
-                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">High</button>
-                </div>
-                <div>
-                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
-                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
-                        mobile devices...</p>
-                </div>
-                <div>
-                    <button class="btn w-[56px] h-[24px] bg-[#FEECEC] text-[#EF4444]">btn1</button>
-                    <button class="btn w-[112px] h-[24px] bg-[#FFF8DB] text-[#FDE68A]">btn1</button>
+        <div id="open-container" class=" grid grid-cols-2 md:grid-cols-4 gap-5">
 
-                </div>
-                <hr class="w-[260px] ml-[-17.5px] opacity-100">
-                <div>
-                    <p>#1 by john_doe</p>
-                    <p>1/15/2024</p>
-                </div>
-
-            </div>
         </div>
 
 
     </section>
-    <section id="Closed-container" class=" w-[1450px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
-        <div id="total-count">
+    <section id="Closed-container" class="md:w-[1450px] w-[768px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
+        <div id="total3-count">
 
         </div>
-        <div id="closed-container" class=" grid grid-cols-4 gap-5">
-            <div class="card bg-white border-2 w-[256.5px] h-[280px] p-4 space-y-4">
-                <div class="flex justify-between ">
-                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
-                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">High</button>
-                </div>
-                <div>
-                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
-                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
-                        mobile devices...</p>
-                </div>
-                <div>
-                    <button class="btn w-[56px] h-[24px] bg-[#FEECEC] text-[#EF4444]">btn1</button>
-                    <button class="btn w-[112px] h-[24px] bg-[#FFF8DB] text-[#FDE68A]">btn1</button>
+        <div id="closed-container" class=" grid grid-cols-2 md:grid-cols-4 gap-5">
 
-                </div>
-                <hr class="w-[260px] ml-[-17.5px] opacity-100">
-                <div>
-                    <p>#1 by john_doe</p>
-                    <p>1/15/2024</p>
-                </div>
-
-            </div>
         </div>
-
-
     </section>
 
     <script src="js/opens.js"></script>

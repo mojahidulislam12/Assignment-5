@@ -89,7 +89,7 @@ const displayOpens = (openDatas) => {
         closedContainer.classList.add("hidden");
       }
       openCard.innerHTML = `
-      <div onclick="loadDetail(${openData.id})" class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="loadDetail(${openData.id})" class="card border-t-green-400 border-t-3 bg-white  md:w-[350.5px] w-[568px] h-[350px] md:h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${openData.status}</button>
@@ -142,7 +142,7 @@ const displayCloseds = (closedDatas) => {
         issuesContainer.classList.add("hidden");
       }
       closedCard.innerHTML = `
-      <div onclick="loadDetail(${closedData.id})" class="card  border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="loadDetail(${closedData.id})" class="card  border-t-3 border-t-[#A855F7] md:w-[350.5px] w-[568px] h-[350px] md:h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${closedData.status}</button>
@@ -211,7 +211,7 @@ const displayAllIssues = (issues) => {
   issues.forEach((issue) => {
     const issueCard = document.createElement("div");
     issueCard.innerHTML = `
-    <div onclick="loadDetail(${issue.id})" class="card   bg-white md:w-[350.5px] w-[]  h-[280px] p-4 space-y-4">
+    <div onclick="loadDetail(${issue.id})" class="card   bg-white md:w-[350.5px] w-[568px] h-[350px] md:h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${issue.priority}</button>

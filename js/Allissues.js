@@ -261,6 +261,8 @@ document.getElementById("btn-search").addEventListener("click", function () {
         issue.priority.toLowerCase().includes(searchValue),
       );
       displayAllIssues(filterWords);
+      displayOpens(filterWords);
+      displayCloseds(filterWords);
     });
 });
 

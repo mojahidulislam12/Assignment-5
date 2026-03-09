@@ -26,6 +26,7 @@
 </head>
 
 <body class="md:w-full w-[768px] bg-base-200 min-h-screen">
+
     <header class="md:h-[78px] h-[78px] bg-white">
         <div class="flex justify-between items-center   ml-[80px] mr-[80px] ">
             <div class="flex justify-start items-center  gap-1 mt-[22.5px]">
@@ -46,12 +47,12 @@
 
     </header>
     <section class="md:w-[1450px] w-full h-[88px] md:text-left text-center mx-auto bg-white mt-[60px]">
-        <div class="p-6 space-x-2">
-            <button id="allIssues" onclick="" class="btn w-[120px] h-[40px]">All</button>
 
-            <button id="allOpens" onclick="" class="btn w-[120px] h-[40px]">Open</button>
-            <button id="allCloseds" onclick="" class="btn w-[120px] h-[40px]">Closed</button>
-        </div>
+        <button id="allIssues" onclick="loadAllIssues()" class="btn w-[120px] h-[40px]">All</button>
+
+        <button id="allOpens" onclick="loadOpens()" class="btn w-[120px] h-[40px]">Open</button>
+        <button id="allCloseds" onclick="loadCloseds()" class="btn w-[120px] h-[40px]">Closed</button>
+
     </section>
     <div id="lodingSpiner" class="text-center hidden">
         <span class="loading loading-spinner loading-xl align-middle"></span>

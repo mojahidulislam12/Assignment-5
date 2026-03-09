@@ -1,11 +1,28 @@
+const spiner = document.getElementById("lodingSpiner");
+const allIssuesBtn = document.getElementById("allIssues");
+const allOpensBtn = document.getElementById("allOpens");
+const allClosedBtn = document.getElementById("allCloseds");
+
+const allIssuesContainer = document.getElementById("Issues-container");
+const allOpensContainer = document.getElementById("Opens-container");
+const allClosedContainer = document.getElementById("Closed-container");
+
 const createElements = (arr) => {
   const htmlElements = arr.map(
     (el) => `<span class="btn bg-[#FEECEC] text-[#EF4444]">${el}</span>`,
   );
   return htmlElements.join(" ");
 };
+
+function showLoading() {
+  spiner.classList.remove("hidden");
+}
+function hiddenLoding() {
+  spiner.classList.add("hidden");
+}
 // Opens
 const loadOpens = () => {
+  showLoading();
   const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
   fetch(url)
     .then((res) => res.json())
@@ -14,54 +31,19 @@ const loadOpens = () => {
       //console.log(data.data);
     });
 };
-
-// {id: 1, title: 'Fix navigation menu on mobile devices', description: "The navigation menu doesn't collapse properly on m…ile devices. Need to fix the responsive behavior.", status: 'open', labels: Array(2), …}
-// assignee
-// :
-// "jane_smith"
-// author
-// :
-// "john_doe"
-// createdAt
-// :
-// "2024-01-15T10:30:00Z"
-// description
-// :
-// "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior."
-// id
-// :
-// 1
-// labels
-// :
-// (2) ['bug', 'help wanted']
-// priority
-// :
-// "high"
-// status
-// :
-// "open"
-// title
-// :
-// "Fix navigation menu on mobile devices"
-// updatedAt
-// :
-// "2024-01-15T10:30:00Z"
-// [[Prototype]]
-// :
-// Object
-
 const openContainer = document.getElementById("open-container");
 const displayOpens = (openDatas) => {
+  hiddenLoding();
   openContainer.innerHTML = "";
   openDatas.forEach((openData) => {
     if (openData.status == "open") {
-      console.log(openData);
+      //console.log(openData);
       const openCard = document.createElement("div");
       if (openCard) {
         issuesContainer.classList.add("hidden");
       }
       openCard.innerHTML = `
-      <div class="card bg-white border-2 w-[350.5px] h-[280px] p-4 space-y-4">
+      <div class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${openData.status}</button>
@@ -89,8 +71,60 @@ const displayOpens = (openDatas) => {
   });
 };
 
+//Closed
+const loadCloseds = () => {
+  showLoading();
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      displayCloseds(data.data);
+      //console.log(data.data);
+    });
+};
+const closedContainer = document.getElementById("closed-container");
+const displayCloseds = (closedDatas) => {
+  hiddenLoding();
+  closedContainer.innerHTML = "";
+  closedDatas.forEach((closedData) => {
+    if (closedData.status == "closed") {
+      //console.log(openData);
+      const closedCard = document.createElement("div");
+      if (closedData) {
+        issuesContainer.classList.add("hidden");
+        openContainer.classList.add("hidden");
+      }
+      closedCard.innerHTML = `
+      <div class="card bg-white border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
+                <div class="flex justify-between ">
+                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
+                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${closedData.status}</button>
+                </div>
+                <div>
+                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
+                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
+                        mobile devices...</p>
+                </div>
+                <div>
+                    ${createElements(closedData.labels)}
+
+                </div>
+                <hr class="w-[260px] ml-[-17.5px] opacity-100">
+                <div>
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+
+            </div>
+      `;
+
+      closedContainer.appendChild(closedCard);
+    }
+  });
+};
 // Issues
 const loadAllIssues = () => {
+  showLoading();
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
   fetch(url)
@@ -101,6 +135,7 @@ const loadAllIssues = () => {
 };
 const issuesContainer = document.getElementById("issues-container");
 const displayAllIssues = (issues) => {
+  hiddenLoding();
   const totalCount = document.getElementById("total-count");
 
   totalCount.innerHTML = `
@@ -129,7 +164,7 @@ const displayAllIssues = (issues) => {
   issues.forEach((issue) => {
     const issueCard = document.createElement("div");
     issueCard.innerHTML = `
-    <div class="card bg-white border-2 w-[350.5px] h-[330px] p-4 space-y-4">
+    <div class="card bg-white w-[350.5px]  h-[330px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${issue.priority}</button>
@@ -154,5 +189,14 @@ const displayAllIssues = (issues) => {
     issuesContainer.append(issueCard);
   });
 };
-
 loadAllIssues();
+
+document.getElementById("allOpens").addEventListener("click", function () {
+  loadOpens();
+});
+document.getElementById("allCloseds").addEventListener("click", function () {
+  loadCloseds();
+});
+document.getElementById("allIssues").addEventListener("click", function () {
+  loadAllIssues();
+});

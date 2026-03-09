@@ -20,6 +20,20 @@ function showLoading() {
 function hiddenLoding() {
   spiner.classList.add("hidden");
 }
+
+const loadDetail = (id) => {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayDetails(data.data));
+};
+
+const displayDetails = (detail) => {
+  console.log(detail);
+  const detailsContainer = document.getElementById("details-container");
+  //detailsContainer.innerHTML = `<h1>Hello</h1>`;
+  document.getElementById("my_modal_5").showModal();
+};
 // Opens
 const loadOpens = () => {
   showLoading();
@@ -44,7 +58,7 @@ const displayOpens = (openDatas) => {
         closedContainer.classList.add("hidden");
       }
       openCard.innerHTML = `
-      <div class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="my_modal_5.showModal()" class="card border-t-green-400 border-t-3 bg-white  w-[350.5px] h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${openData.status}</button>
@@ -97,7 +111,7 @@ const displayCloseds = (closedDatas) => {
         issuesContainer.classList.add("hidden");
       }
       closedCard.innerHTML = `
-      <div class="card bg-white border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
+      <div onclick="my_modal_5.showModal()" class="card  border-t-3 border-t-[#A855F7] w-[350.5px] h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${closedData.status}</button>
@@ -166,7 +180,7 @@ const displayAllIssues = (issues) => {
   issues.forEach((issue) => {
     const issueCard = document.createElement("div");
     issueCard.innerHTML = `
-    <div class="card bg-white md:w-[350.5px] w-[]  h-[330px] p-4 space-y-4">
+    <div onclick="loadDetail(${issue.id})" class="card   bg-white md:w-[350.5px] w-[]  h-[280px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${issue.priority}</button>
@@ -218,3 +232,5 @@ document.getElementById("btn-search").addEventListener("click", function () {
       displayAllIssues(filterWords);
     });
 });
+
+document.getElementById("my_modal_5").addEventListener("click", function () {});

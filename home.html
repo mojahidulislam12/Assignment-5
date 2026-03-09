@@ -27,14 +27,107 @@
 
 <body class="w-full bg-base-200 min-h-screen">
     <header class="h-[78px] bg-white">
-        <div>
-            <div class="flex justify-start items-center gap-1 mt-[23.5px]">
+        <div class="flex justify-between ml-[80px] mr-[80px] ">
+            <div class="flex justify-start gap-1 mt-[22.5px]">
                 <img class="w-9 h-[37px]" src="assets/github-logo.png" alt="" srcset="">
                 <h1 class="font-semibold text-[24px] text-[#1F2937]">GitHub Issues Tracker</h1>
             </div>
+            <div class="join mt-[22.5px]">
+                <div class="mr-[16px]">
+                    <label class="input validator join-item">
+                        <input id="input-search" type="text" placeholder="Search Vocabulary Now..." required />
+                    </label>
+                </div>
+                <button id="btn-search" class="btn btn-primary join-item">Search</button>
+            </div>
+
         </div>
 
     </header>
+    <section class="w-[1450px] h-[88px] mx-auto bg-white mt-[60px]">
+        <div class="p-6 space-x-2">
+            <button id="allIssues" onclick="loadAllIssues()" class="btn w-[120px] h-[40px]">All</button>
+
+            <button id="allOpens" onclick="loadOpens()" class="btn w-[120px] h-[40px]">Open</button>
+            <button id="allClosed" class="btn w-[120px] h-[40px]">Closed</button>
+        </div>
+    </section>
+    <div id="lodingSpiner" class="text-center hidden">
+        <span class="loading loading-spinner loading-xl align-middle"></span>
+    </div>
+    <section id="Issues-container" class=" w-[1450px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
+        <div id="total-count">
+
+        </div>
+        <div id="issues-container" class="grid grid-cols-4 gap-5">
+
+
+            <div class="card bg-white border-2 w-[256.5px] h-[280px] p-4 space-y-4">
+                <div class="flex justify-between ">
+                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
+                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">High</button>
+                </div>
+                <div>
+                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
+                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
+                        mobile devices...</p>
+                </div>
+                <div>
+                    <button class="btn w-[56px] h-[24px] bg-[#FEECEC] text-[#EF4444]">btn1</button>
+                    <button class="btn w-[112px] h-[24px] bg-[#FFF8DB] text-[#FDE68A]">btn1</button>
+
+                </div>
+                <hr class="w-[260px] ml-[-17.5px] opacity-100">
+                <div>
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+    <section id="Issues-container" class=" w-[1450px] mx-auto p-4 bg-[#FBFBFB] border-1 ">
+        <div id="total-count">
+
+        </div>
+        <div id="open-container" class=" grid grid-cols-4 gap-5">
+            <div class="card bg-white border-2 w-[256.5px] h-[280px] p-4 space-y-4">
+                <div class="flex justify-between ">
+                    <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
+                    <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">High</button>
+                </div>
+                <div>
+                    <h1 class="font-bold text-[14px] text-[#1F2937]">Fix navigation menu on mobile devices</h1>
+                    <p class="font-normal text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
+                        mobile devices...</p>
+                </div>
+                <div>
+                    <button class="btn w-[56px] h-[24px] bg-[#FEECEC] text-[#EF4444]">btn1</button>
+                    <button class="btn w-[112px] h-[24px] bg-[#FFF8DB] text-[#FDE68A]">btn1</button>
+
+                </div>
+                <hr class="w-[260px] ml-[-17.5px] opacity-100">
+                <div>
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <script src="js/opens.js"></script>
+    <script src="js/Allissues.js"></script>
 </body>
 
 </html>

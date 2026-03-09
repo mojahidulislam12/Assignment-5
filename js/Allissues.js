@@ -166,7 +166,7 @@ const displayAllIssues = (issues) => {
   issues.forEach((issue) => {
     const issueCard = document.createElement("div");
     issueCard.innerHTML = `
-    <div class="card bg-white w-[350.5px]  h-[330px] p-4 space-y-4">
+    <div class="card bg-white md:w-[350.5px] w-[]  h-[330px] p-4 space-y-4">
                 <div class="flex justify-between ">
                     <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                     <button class="btn w-[80px] h-[24px] rounded-[100px] bg-[#FEECEC] text-[#EF4444]">${issue.priority}</button>
@@ -193,12 +193,28 @@ const displayAllIssues = (issues) => {
 };
 loadAllIssues();
 
-document.getElementById("allOpens").addEventListener("click", function () {
-  loadOpens();
+document.getElementById("allIssues").addEventListener("click", function () {
+  loadAllIssues();
 });
 document.getElementById("allCloseds").addEventListener("click", function () {
   loadCloseds();
 });
-document.getElementById("allIssues").addEventListener("click", function () {
-  loadAllIssues();
+document.getElementById("allOpens").addEventListener("click", function () {
+  loadOpens();
+});
+
+document.getElementById("btn-search").addEventListener("click", function () {
+  const input = document.getElementById("input-search");
+  const searchValue = input.value.trim().toLowerCase();
+  console.log(searchValue);
+  fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      console.log(allWords);
+      const filterWords = allWords.filter((issue) =>
+        issue.priority.toLowerCase().includes(searchValue),
+      );
+      displayAllIssues(filterWords);
+    });
 });
